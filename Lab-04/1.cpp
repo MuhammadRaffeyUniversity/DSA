@@ -5,6 +5,7 @@ class Node
 public:
     int data;
     Node *next;
+    Node(int val) : data(val), next(NULL) {}
 };
 class LinkedList
 {
@@ -19,16 +20,13 @@ public:
 
     void insertAtBeginning(int value)
     {
-        Node *newNode = new Node();
-        newNode->data = value;
+        Node *newNode = new Node(value);
         newNode->next = head;
         head = newNode;
     }
     void insertAtEnd(int value)
     {
-        Node *newNode = new Node();
-        newNode->data = value;
-        newNode->next = NULL;
+        Node *newNode = new Node(value);
 
         if (head == NULL)
         {
@@ -51,8 +49,7 @@ public:
             return;
         }
 
-        Node *newNode = new Node();
-        newNode->data = value;
+        Node *newNode = new Node(value);
 
         Node *temp = head;
         for (int i = 0; i < position - 1 && temp != NULL; i++)
