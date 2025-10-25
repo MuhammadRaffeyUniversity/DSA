@@ -69,6 +69,98 @@ public:
         newNode->next = temp->next;
         temp->next = newNode;
     }
+    void remove()
+    {
+        if (head == NULL)
+        {
+            return;
+        }
+
+        Node *temp = head;
+        head = temp->next;
+        delete temp;
+    }
+    void removeAtEnd()
+    {
+        if (head == NULL)
+        {
+            return;
+        }
+        Node *temp = head;
+        while (temp->next->next != NULL)
+        {
+            temp = temp->next;
+        }
+        delete temp->next;
+        temp->next = NULL;
+    }
+    void removeAtPosition(int pos)
+    {
+        if (head == NULL)
+        {
+            return;
+        }
+        if (pos == 0)
+        {
+            remove();
+        }
+        Node *temp = head;
+        for (int i = 0; i < pos - 1 && temp != NULL; i++)
+        {
+            temp = temp->next;
+        }
+        if (temp == NULL || temp->next == NULL)
+        {
+            cout << "Position out of bounds" << endl;
+            return;
+        }
+        Node *toDelete = temp->next;
+        temp->next = toDelete->next;
+        delete toDelete;
+    }
+    void bubbleSort()
+    {
+        if (head == NULL)
+        {
+            return;
+        }
+        bool swapped;
+        Node *start;
+        Node *end = NULL;
+        do
+        {
+            swapped = false;
+            start = head;
+
+            while (start->next != end)
+            {
+                if (start->data > start->next->data)
+                {
+                    swap(start->data, start->next->data);
+                    swapped = true;
+                }
+                start = start->next;
+            }
+            end = start;
+        } while (swapped);
+    }
+
+    int searchElement(int key)
+    {
+        Node *temp = head;
+        int position = 1;
+
+        while (temp != NULL)
+        {
+            if (temp->data == key)
+            {
+                return position;
+            }
+            temp = temp->next;
+            position++;
+        }
+        return -1;
+    }
     void display()
     {
         Node *temp = head;
@@ -92,5 +184,15 @@ int main()
     list.display();
     list.insertAtPosition(3, 2);
     list.display();
+    cout << "Sorting the Linked List now\n\n";
+    list.bubbleSort();
+    list.display();
+    // list.display();
+    // list.remove();
+    // list.display();
+    // list.removeAtEnd();
+    // list.display();
+    // list.removeAtPosition(1);
+    // list.display();
     return 0;
 }
