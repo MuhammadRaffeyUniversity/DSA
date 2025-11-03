@@ -60,9 +60,9 @@ void bubbleSort(string arr[], int n)
 
 int main()
 {
-    string books[] = {"The Hobbit", "1984", "To Kill a Mockingbird", "Pride and Prejudice",
-                      "War and Peace", "The Great Gatsby", "Crime and Punishment"};
-    int n = 7;
+    string books[] = {"DSA", "Linear", "Theory of Automata", "C++",
+                      "Python", "TypeScript", "NextJS"};
+    int n = sizeof(books) / sizeof(books[0]);
 
     string sortedBooks[8];
     for (int i = 0; i < n; i++)
@@ -71,7 +71,7 @@ int main()
     }
     bubbleSort(sortedBooks, n);
 
-    string searchBook = "1984";
+    string searchBook = "NextJS";
     int index;
 
     cout << "Library Book Search System\n\n";
