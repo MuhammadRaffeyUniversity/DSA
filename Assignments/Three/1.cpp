@@ -182,22 +182,8 @@ void freeTree(Node *root)
 
 int main()
 {
-    int size;
-    cout << "Enter the size of the array: ";
-    cin >> size;
-
-    if (size <= 0)
-    {
-        cout << "Invalid size" << endl;
-        return 1;
-    }
-
-    int *values = new int[size];
-    cout << "Enter " << size << " integer values: ";
-    for (int i = 0; i < size; i++)
-    {
-        cin >> values[i];
-    }
+    const int size = 6;
+    int values[size] = {5, 3, 7, 3, 2, 5};
 
     Node *originalTree = buildTreeFromArray(values, size);
     cout << "Binary Tree before removing duplicates (level order): ";
@@ -217,7 +203,6 @@ int main()
     printInOrder(bstRoot);
     cout << endl;
 
-    delete[] values;
     delete[] uniqueValues;
     freeTree(originalTree);
     freeTree(uniqueTree);
